@@ -14,6 +14,7 @@ public class DiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dice);
 
+        // I am Santiago
         // set spinner for the number of dice
         Spinner mySpinnerNumDice = (Spinner) findViewById(R.id.spinnerNumberDice);
 

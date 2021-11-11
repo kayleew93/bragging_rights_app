@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
-            android:name=".Dice"
+            android:name=".StatisticsMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DiceActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

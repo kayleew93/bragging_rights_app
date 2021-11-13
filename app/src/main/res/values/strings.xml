@@ -7,6 +7,8 @@
     <string name="select_from_existing_game_template">Select from existing Game Template:</string>
     <string name="select_from_an_existing_game_template">Select from an existing game template:</string>
     <string name="select_game_you_want_to_play">Select Game you want to play:</string>
+    <string name="create_new_game_template">Create New Game Template</string>
+    <string name="game_name">Game Name</string>
 
     <string-array name="dicenumbers">
         <item>1</item>

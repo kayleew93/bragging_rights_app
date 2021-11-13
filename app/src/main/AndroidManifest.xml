@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
+            android:name=".ViewStatsByPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ViewStatsByGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".StatisticsMainActivity"
             android:exported="false" />
         <activity

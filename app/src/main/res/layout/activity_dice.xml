@@ -4,18 +4,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DiceActivity"
-    tools:layout_editor_absoluteX="11dp"
-    tools:layout_editor_absoluteY="46dp">
+    tools:context=".DiceActivity">
 
     <TextView
         android:id="@+id/diceRoller"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="Dice Roller"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/playerPicker"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="360dp"
+        android:text="Who Goes First"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,8 +30,8 @@
         android:id="@+id/numberDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
         android:text="Number of Dice:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diceRoller" />
@@ -33,28 +40,48 @@
         android:id="@+id/numberSides"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
         android:text="Number of Sides:"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/numberDice" />
+
+    <TextView
+        android:id="@+id/numberPlayers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="Number of Players:"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerPicker" />
 
     <Button
         android:id="@+id/rollDiceButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="204dp"
+        android:layout_marginTop="168dp"
+        android:layout_marginEnd="24dp"
         android:text="Roll Dice"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/diceRoller" />
+
+    <Button
+        android:id="@+id/pickPlayerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:layout_marginEnd="24dp"
+        android:text="Pick Player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/playerPicker" />
 
     <Spinner
         android:id="@+id/spinnerNumberDice"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/numberDice"
         app:layout_constraintTop_toBottomOf="@+id/diceRoller" />
@@ -63,27 +90,38 @@
         android:id="@+id/spinnerNumberSides"
         android:layout_width="48dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/numberSides"
         app:layout_constraintTop_toBottomOf="@+id/numberDice" />
+
+    <Spinner
+        android:id="@+id/spinnerNumberPlayers"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/numberPlayers"
+        app:layout_constraintTop_toBottomOf="@+id/playerPicker" />
 
     <ListView
         android:id="@+id/diceResultsList"
         android:layout_width="229dp"
         android:layout_height="121dp"
-        android:layout_marginStart="56dp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="444dp" />
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/playerPicker"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/resultsText"
+        android:id="@+id/playerPickerResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:text="Results:"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="406dp" />
-
+        app:layout_constraintTop_toBottomOf="@+id/numberPlayers" />
 </androidx.constraintlayout.widget.ConstraintLayout>

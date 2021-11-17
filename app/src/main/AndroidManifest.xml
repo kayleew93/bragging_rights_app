@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
+            android:name=".CreateLocalPlayerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddNewGameTemplate"
             android:exported="false" />
         <activity

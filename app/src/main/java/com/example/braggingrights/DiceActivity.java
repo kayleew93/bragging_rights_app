@@ -30,14 +30,6 @@ public class DiceActivity extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.sidesnumbers));
         myAdapterNumSides.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinnerNumSides.setAdapter(myAdapterNumSides);
-
-        // set spinner for the number of players
-        Spinner mySpinnerNumPlayers = (Spinner) findViewById(R.id.spinnerNumberPlayers);
-
-        ArrayAdapter<String> myAdapterNumPlayers = new ArrayAdapter<String>(DiceActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.dicenumbers));
-        myAdapterNumPlayers.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinnerNumPlayers.setAdapter(myAdapterNumPlayers);
     }
 
     public void generateNumber(View view) {

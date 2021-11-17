@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
+            android:name=".PlayerPickerActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddNewGameTemplate"
             android:exported="false" />
         <activity

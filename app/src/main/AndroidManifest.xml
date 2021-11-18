@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
+            android:name=".LiveGameActivity"
+            android:exported="false" />
+        <activity
             android:name=".CreateLocalPlayerActivity"
             android:exported="false" />
         <activity

@@ -40,13 +40,29 @@
         app:layout_constraintTop_toBottomOf="@+id/playerSelectText" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/totalNumberWinsText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="48dp"
-        android:text="Winning Streak:"
+        android:text="Total Number of Wins:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/winToLossText" />
+
+    <TextView
+        android:id="@+id/winToLossPercentageOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/winToLossText"
+        app:layout_constraintTop_toTopOf="@+id/winToLossText" />
+
+    <TextView
+        android:id="@+id/totalWinsOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/totalNumberWinsText"
+        app:layout_constraintTop_toTopOf="@+id/totalNumberWinsText" />
 </androidx.constraintlayout.widget.ConstraintLayout>

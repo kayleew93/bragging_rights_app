@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
+
+import java.util.Collections;
+import java.util.List;
 
 public class DiceActivity extends AppCompatActivity {
 
@@ -31,16 +35,30 @@ public class DiceActivity extends AppCompatActivity {
         myAdapterNumSides.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         mySpinnerNumSides.setAdapter(myAdapterNumSides);
 
+        /*
         // set spinner for the number of players
         Spinner mySpinnerNumPlayers = (Spinner) findViewById(R.id.spinnerNumberPlayers);
 
         ArrayAdapter<String> myAdapterNumPlayers = new ArrayAdapter<String>(DiceActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.dicenumbers));
         myAdapterNumPlayers.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mySpinnerNumPlayers.setAdapter(myAdapterNumPlayers);
+        mySpinnerNumPlayers.setAdapter(myAdapterNumPlayers); */
     }
 
-    public void generateNumber(View view) {
+    public void generateDiceList(View view) {
+        Spinner mySpinnerDice = (Spinner) findViewById(R.id.spinnerNumberDice);
+        Integer spinnerNumberDice = (Integer) mySpinnerDice.getSelectedItem();
 
+        Spinner mySpinnerSides = (Spinner) findViewById(R.id.spinnerNumberDice);
+        Integer spinnerNumberSides = (Integer) mySpinnerSides.getSelectedItem();
+        
+        // send user-selected values to generate the numbers to a list
+        RandomGeneratorPresenter generatorPresenter = new RandomGeneratorPresenter();
+        List diceValues = generatorPresenter.generateRandomNumberSet(spinnerNumberDice, spinnerNumberSides);
+
+        // output the list for viewers
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Collections.singletonList(diceValues.toString()));
+        ListView diceResults = (ListView) this.findViewById(R.id.diceResultsListOutput);
+        diceResults.setAdapter(arrayAdapter);
     }
 }

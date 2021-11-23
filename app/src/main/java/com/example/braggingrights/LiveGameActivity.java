@@ -11,4 +11,6 @@ public class LiveGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_game);
     }
+
+
 }

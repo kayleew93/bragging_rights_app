@@ -8,6 +8,11 @@ public class StatisticsPresenter {
 
     float calculateIndividualPercentage() {
         //TODO: calculate individual wins
+        // Get individual stats from cloud
+
+        //int individualWins = getStatsFromCloud(playerId);
+        //int individualLosses = getStatsFromCloud(playerId);
+        //percentage = individualWins / individualLosses * 100;
         return percentage;
     }
 

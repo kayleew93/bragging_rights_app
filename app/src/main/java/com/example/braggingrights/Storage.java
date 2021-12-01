@@ -6,7 +6,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public interface Storage {
 
     //TODO: Write to cloud; return void
-    public static void writeToCloud() {
+    static void writeToCloud() {
         // [START write_message]
         // Write a message to the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -18,4 +18,21 @@ public interface Storage {
     }
 
     //TODO: Retrieve from cloud; return string
+    // Read from the database
+    /*
+    myRef.addValueEventListener(new ValueEventListener() {
+        @Override
+        public void onDataChange(DataSnapshot dataSnapshot) {
+            // This method is called once with the initial value and again
+            // whenever data at this location is updated.
+            String value = dataSnapshot.getValue(String.class);
+            Log.d(TAG, "Value is: " + value);
+        }
+
+        @Override
+        public void onCancelled(DatabaseError error) {
+            // Failed to read value
+            Log.w(TAG, "Failed to read value.", error.toException());
+        }
+    }); */
 }

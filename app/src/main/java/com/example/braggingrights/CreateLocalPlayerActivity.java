@@ -51,7 +51,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
 
             FirebaseStoragePlayer firebaseStorage = new FirebaseStoragePlayer(playerFullName, playerNickname, playerPhoneNumber, totalGames, gamesWon);
 
-            reference.child(playerNickname).setValue(firebaseStorage);
+            reference.child(playerPhoneNumber).setValue(firebaseStorage);
 
             Toast.makeText(CreateLocalPlayerActivity.this, "Successfully created player", Toast.LENGTH_LONG).show();
         }

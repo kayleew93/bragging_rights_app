@@ -93,9 +93,10 @@
     </RadioGroup>
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/avatar"
         android:layout_width="228dp"
         android:layout_height="138dp"
+        android:onClick="selectAvatar"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -103,9 +104,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.246"
-        app:srcCompat="@drawable/avatar"
 
-        />
+        app:srcCompat="@drawable/avatar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

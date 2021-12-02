@@ -3,22 +3,23 @@ package com.example.braggingrights;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class FirebaseStoragePlayer {
+public class FirebaseStorageGame {
 
-    String fullName, playerNickname, phoneNumber;
-    Integer totalGames, gamesWon;
+    String name;
+    int rounds;
+    Boolean highWins;
+    Boolean useDice;
+    Float points;
+    int gameId;
 
-    public FirebaseStoragePlayer() {
+    public FirebaseStorageGame() {
     }
 
-    public FirebaseStoragePlayer(String fullName, String playerNickname, String phoneNumber, Integer totalGames, Integer gamesWon) {
-        this.fullName = fullName;
-        this.playerNickname = playerNickname;
-        this.phoneNumber = phoneNumber;
-        this.totalGames = totalGames;
-        this.gamesWon = gamesWon;
-    }
+    public FirebaseStorageGame(String name, int rounds, Boolean highWins) {
+        this.name = name;
 
+    }
+    /* Getters and setters
     public String getFullName() {
         return fullName;
     }
@@ -50,5 +51,7 @@ public class FirebaseStoragePlayer {
     public Integer getGamesWon() { return gamesWon; }
 
     public void setGamesWon(Integer gamesWon) { this.gamesWon = gamesWon; }
+
+     */
 
 }

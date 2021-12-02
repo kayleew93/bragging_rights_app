@@ -38,7 +38,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
 
 
         public void clickCreatePlayer(View view) {
-            //TODO: send info to create a player
+            //connect to the Firebase Database
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("playerInfo");
 
@@ -54,5 +54,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
             reference.child(playerPhoneNumber).setValue(firebaseStorage);
 
             Toast.makeText(CreateLocalPlayerActivity.this, "Successfully created player", Toast.LENGTH_LONG).show();
+
+            startActivity(new Intent(CreateLocalPlayerActivity.this, MainActivity.class));
         }
 }

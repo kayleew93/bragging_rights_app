@@ -1,8 +1,5 @@
 package com.example.braggingrights;
 
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class FirebaseStoragePlayer {
 
     String fullName, playerNickname, phoneNumber;

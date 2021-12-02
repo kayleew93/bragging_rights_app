@@ -16,16 +16,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickCreateGame(View view) {
-        // TODO: update intent for create game view
+        // Send user to Create Game Activity
         startActivity(new Intent(MainActivity.this, CreateGameActivity.class));
     }
 
     public void clickCreateLocalPlayer(View view) {
-        // TODO: update intent for create local player view
+        // Send user to Create Local Player Activity
         startActivity(new Intent(MainActivity.this, CreateLocalPlayerActivity.class));
     }
 
     public void clickViewStatistics(View view) {
+        // Send user to View Statistics Activity
         startActivity(new Intent(MainActivity.this, StatisticsMainActivity.class));
     }
 }

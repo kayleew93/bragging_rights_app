@@ -10,7 +10,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="32dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="10dp"
         android:text="Select your Avatar:"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"

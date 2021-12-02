@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +18,7 @@ import com.google.firebase.storage.FirebaseStorage;
 public class CreateLocalPlayerActivity extends AppCompatActivity {
 
     // Variables
-    TextView fullName, pNickname, phoneNumber;
+    EditText fullName, pNickname, phoneNumber;
     // male/female; avatar
     FirebaseDatabase rootNode;
     DatabaseReference reference;
@@ -30,6 +32,8 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
         fullName = findViewById(R.id.playerName);
         pNickname = findViewById(R.id.playerNickname);
         phoneNumber = findViewById(R.id.phoneNumber);
+
+
     }
 
     public void selectAvatar(View view) {
@@ -38,7 +42,20 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
 
 
         public void clickCreatePlayer(View view) {
-            //connect to the Firebase Database
+        // Test second method
+        FirebaseUpload fbo = new FirebaseUpload();
+        FirebaseStoragePlayer fbsp = new FirebaseStoragePlayer(fullName.getText().toString(), pNickname.getText().toString(), phoneNumber.getText().toString(), 0,0);
+         fbo.add(fbsp).addOnSuccessListener(suc ->
+         {
+             Toast.makeText(this, "Successfully created player", Toast.LENGTH_LONG).show();
+         }).addOnFailureListener(er ->
+         {
+             Toast.makeText(this, "Failure to add", Toast.LENGTH_LONG).show();
+         });
+
+        /*
+        //connect to the Firebase Database
+
             rootNode = FirebaseDatabase.getInstance();
             reference = rootNode.getReference("playerInfo");
 
@@ -49,12 +66,15 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
             Integer totalGames = 0;
             Integer gamesWon = 0;
 
+            // Create info for Database
             FirebaseStoragePlayer firebaseStorage = new FirebaseStoragePlayer(playerFullName, playerNickname, playerPhoneNumber, totalGames, gamesWon);
 
+            // Send the info to the database
             reference.child(playerPhoneNumber).setValue(firebaseStorage);
 
             Toast.makeText(CreateLocalPlayerActivity.this, "Successfully created player", Toast.LENGTH_LONG).show();
 
             startActivity(new Intent(CreateLocalPlayerActivity.this, MainActivity.class));
+            */
         }
 }

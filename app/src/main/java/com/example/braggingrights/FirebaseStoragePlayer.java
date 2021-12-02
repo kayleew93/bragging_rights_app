@@ -2,11 +2,10 @@ package com.example.braggingrights;
 
 public class FirebaseStoragePlayer {
 
-    String fullName, playerNickname, phoneNumber;
-    Integer totalGames, gamesWon;
+    private String fullName, playerNickname, phoneNumber;
+    private Integer totalGames, gamesWon;
 
-    public FirebaseStoragePlayer() {
-    }
+    public FirebaseStoragePlayer() {}
 
     public FirebaseStoragePlayer(String fullName, String playerNickname, String phoneNumber, Integer totalGames, Integer gamesWon) {
         this.fullName = fullName;

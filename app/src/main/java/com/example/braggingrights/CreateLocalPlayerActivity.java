@@ -22,6 +22,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
     // male/female; avatar
     FirebaseDatabase rootNode;
     DatabaseReference reference;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
         fullName = findViewById(R.id.playerName);
         pNickname = findViewById(R.id.playerNickname);
         phoneNumber = findViewById(R.id.phoneNumber);
+        db = new DBHelper(this);
 
 
     }
@@ -42,6 +44,20 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
 
 
         public void clickCreatePlayer(View view) {
+        // Test SQLite https://www.youtube.com/watch?v=9t8VVWebRFM
+        String nameTXT = fullName.getText().toString();
+        String pNicknameTXT = pNickname.getText().toString();
+        String phoneNumberTXT = phoneNumber.getText().toString();
+        int phoneNumberINT = Integer.parseInt(phoneNumberTXT);
+
+        Boolean checkinsertdata = db.insertuserdata(nameTXT, pNicknameTXT, phoneNumberINT, 0, 0, 0);
+                if (checkinsertdata==true)
+                    Toast.makeText(CreateLocalPlayerActivity.this, "New Player Inserted", Toast.LENGTH_LONG).show();
+                else
+                    Toast.makeText(CreateLocalPlayerActivity.this, "Error: New Player Not Inserted", Toast.LENGTH_LONG).show();
+
+
+
         // Test second method
         FirebaseUpload fbo = new FirebaseUpload();
         FirebaseStoragePlayer fbsp = new FirebaseStoragePlayer(fullName.getText().toString(), pNickname.getText().toString(), phoneNumber.getText().toString(), 0,0);

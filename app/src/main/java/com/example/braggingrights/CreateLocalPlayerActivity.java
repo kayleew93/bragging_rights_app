@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,9 +18,10 @@ import com.google.firebase.storage.FirebaseStorage;
 
 public class CreateLocalPlayerActivity extends AppCompatActivity {
 
+    private static final String TAG = "CreateLocalPlayerActivity";
     // Variables
     EditText fullName, pNickname, phoneNumber;
-    // male/female; avatar
+    int gender;
     FirebaseDatabase rootNode;
     DatabaseReference reference;
     DBHelper db;
@@ -38,6 +40,24 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
 
     }
 
+    public void onRadioButtonClicked(View view) {
+        // Is the button now checked?
+        boolean checked = ((RadioButton) view).isChecked();
+
+        // Check which radio button was clicked
+        switch(view.getId()) {
+            case R.id.male:
+                if (checked)
+                    gender = 0;
+                    break;
+            case R.id.female:
+                if (checked)
+                    gender = 1;
+                    break;
+        }
+    }
+
+
     public void selectAvatar(View view) {
         startActivity(new Intent(CreateLocalPlayerActivity.this, SelectAvatar.class));
     }
@@ -49,15 +69,17 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
         String pNicknameTXT = pNickname.getText().toString();
         String phoneNumberTXT = phoneNumber.getText().toString();
         int phoneNumberINT = Integer.parseInt(phoneNumberTXT);
+        int gamesWon = 0;
+        int totalGames = 0;
 
-        Boolean checkinsertdata = db.insertuserdata(nameTXT, pNicknameTXT, phoneNumberINT, 0, 0, 0);
+
+        Boolean checkinsertdata = db.insertuserdata(gamesWon, gender, nameTXT, pNicknameTXT, phoneNumberINT, totalGames);
                 if (checkinsertdata==true)
                     Toast.makeText(CreateLocalPlayerActivity.this, "New Player Inserted", Toast.LENGTH_LONG).show();
                 else
                     Toast.makeText(CreateLocalPlayerActivity.this, "Error: New Player Not Inserted", Toast.LENGTH_LONG).show();
 
-
-
+    /*
         // Test second method
         FirebaseUpload fbo = new FirebaseUpload();
         FirebaseStoragePlayer fbsp = new FirebaseStoragePlayer(fullName.getText().toString(), pNickname.getText().toString(), phoneNumber.getText().toString(), 0,0);
@@ -67,30 +89,6 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
          }).addOnFailureListener(er ->
          {
              Toast.makeText(this, "Failure to add", Toast.LENGTH_LONG).show();
-         });
-
-        /*
-        //connect to the Firebase Database
-
-            rootNode = FirebaseDatabase.getInstance();
-            reference = rootNode.getReference("playerInfo");
-
-            // Get the values
-            String playerFullName = fullName.getText().toString();
-            String playerNickname = pNickname.getText().toString();
-            String playerPhoneNumber = phoneNumber.getText().toString();
-            Integer totalGames = 0;
-            Integer gamesWon = 0;
-
-            // Create info for Database
-            FirebaseStoragePlayer firebaseStorage = new FirebaseStoragePlayer(playerFullName, playerNickname, playerPhoneNumber, totalGames, gamesWon);
-
-            // Send the info to the database
-            reference.child(playerPhoneNumber).setValue(firebaseStorage);
-
-            Toast.makeText(CreateLocalPlayerActivity.this, "Successfully created player", Toast.LENGTH_LONG).show();
-
-            startActivity(new Intent(CreateLocalPlayerActivity.this, MainActivity.class));
-            */
-        }
+         }); */
+ }
 }

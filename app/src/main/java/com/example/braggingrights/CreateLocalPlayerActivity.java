@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,7 +74,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
         int totalGames = 0;
 
 
-        Boolean checkinsertdata = db.insertuserdata(gamesWon, gender, nameTXT, pNicknameTXT, phoneNumberINT, totalGames);
+        Boolean checkinsertdata = db.insertPlayerDetails(gamesWon, gender, nameTXT, pNicknameTXT, phoneNumberINT, totalGames);
                 if (checkinsertdata==true)
                     Toast.makeText(CreateLocalPlayerActivity.this, "New Player Inserted", Toast.LENGTH_LONG).show();
                 else

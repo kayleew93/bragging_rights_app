@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBHelper extends SQLiteOpenHelper {
 
     public DBHelper(@Nullable Context context) {
@@ -18,16 +20,22 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE PlayerDetails (gamesWon int, gender int, name text, nickname text, phoneNumber int PRIMARY KEY, totalGames int)");
+        db.execSQL("CREATE TABLE PlayerDetails (gamesWon int, gender int, name text, nickname text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
+        db.execSQL("CREATE TABLE GameDetails (gameId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberPlayers int, scoreMethod int)");
+        db.execSQL("CREATE TABLE GameResults (gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
+        db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(("DROP TABLE IF EXISTS PlayerDetails"));
+        db.execSQL(("DROP TABLE IF EXISTS GameDetails"));
+        db.execSQL(("DROP TABLE IF EXISTS GameResults"));
+        db.execSQL(("DROP TABLE IF EXISTS PlayersList"));
         onCreate(db);
     }
 
-    public Boolean insertuserdata(int gamesWon, int gender, String name, String nickname, int phoneNumber, int totalGames) {
+    public Boolean insertPlayerDetails(int gamesWon, int gender, String name, String nickname, int phoneNumber, int totalGames) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("name", name);
@@ -62,11 +70,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-
-
-    public Cursor getuserdata () {
+    public Cursor getPlayerNicknameList() {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select * from PlayerDetails where id=" + 1 + "", null);
+        Cursor cursor = db.rawQuery("Select nickname, playerId from PlayerDetails", null);
         return cursor;
     }
 }

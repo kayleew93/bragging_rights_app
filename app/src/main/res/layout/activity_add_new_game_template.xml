@@ -22,7 +22,7 @@
         android:id="@+id/promptGameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="36dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="116dp"
         android:text="@string/game_name"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -35,63 +35,76 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:hint="Number of Rounds"
         android:inputType="number"
-        app:layout_constraintTop_toBottomOf="@+id/editGameName"
-        tools:layout_editor_absoluteX="194dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editGameName" />
 
     <EditText
         android:id="@+id/editGameName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        tools:layout_editor_absoluteX="194dp"
-        tools:layout_editor_absoluteY="175dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/promptGameName" />
 
     <Switch
         android:id="@+id/needsDice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
         android:text="Game Needs Dice"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="96dp"
-        tools:layout_editor_absoluteY="352dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/selectNumberRounds" />
 
     <Switch
         android:id="@+id/needsFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Pick Who Goes First"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="78dp"
-        tools:layout_editor_absoluteY="392dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needsDice" />
 
     <Switch
         android:id="@+id/isHighScoreWins"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         android:text="Highest Score Wins"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-        tools:layout_editor_absoluteX="83dp"
-        tools:layout_editor_absoluteY="445dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/needsFirst" />
 
     <Button
         android:id="@+id/cancelTemplate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="516dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isHighScoreWins" />
 
     <Button
         android:id="@+id/saveTemplate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:onClick="clickAddNewTemplate"
         android:text="Save Template"
-        tools:layout_editor_absoluteX="245dp"
-        tools:layout_editor_absoluteY="512dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isHighScoreWins" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

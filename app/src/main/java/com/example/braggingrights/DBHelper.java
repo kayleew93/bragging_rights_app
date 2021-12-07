@@ -21,7 +21,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE PlayerDetails (gamesWon int, gender int, name text, nickname text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
-        db.execSQL("CREATE TABLE GameDetails (gameId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberPlayers int, scoreMethod int)");
+        db.execSQL("CREATE TABLE GameTemplate (gameTemplateId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberRounds int, highScoreWins Boolean, needsDice Boolean)");
         db.execSQL("CREATE TABLE GameResults (gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
         db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
     }
@@ -29,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(("DROP TABLE IF EXISTS PlayerDetails"));
-        db.execSQL(("DROP TABLE IF EXISTS GameDetails"));
+        db.execSQL(("DROP TABLE IF EXISTS GameTemplate"));
         db.execSQL(("DROP TABLE IF EXISTS GameResults"));
         db.execSQL(("DROP TABLE IF EXISTS PlayersList"));
         onCreate(db);
@@ -45,6 +45,21 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put("totalGames", totalGames);
         contentValues.put("gamesWon", gamesWon);
         long result = db.insert("PlayerDetails", null, contentValues);
+        if (result == -1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    public Boolean insertNewGameTemplate(String name, int numberRounds, Boolean highScoreWins, Boolean needsDice) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("name", name);
+        contentValues.put("numberRounds", numberRounds);
+        contentValues.put("highScoreWins", highScoreWins);
+        contentValues.put("needsDice", needsDice);
+        long result = db.insert("GameTemplate", null, contentValues);
         if (result == -1) {
             return false;
         } else {

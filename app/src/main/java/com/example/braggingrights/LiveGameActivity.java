@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
@@ -20,6 +21,7 @@ public class LiveGameActivity extends AppCompatActivity {
     ListView listView;
     DBHelper db;
     Cursor playerCursor;
+    private static final String TAG = "LiveGameActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +33,6 @@ public class LiveGameActivity extends AppCompatActivity {
 
         ListView playerList = (ListView) findViewById(R.id.playerListOutput);
         playerList.setAdapter((ListAdapter) playerCursor);
-
     }
 
 

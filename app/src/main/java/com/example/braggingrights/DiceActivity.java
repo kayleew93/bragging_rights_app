@@ -55,6 +55,7 @@ public class DiceActivity extends AppCompatActivity {
         RandomGeneratorPresenter generatorPresenter = new RandomGeneratorPresenter();
         List diceValues = generatorPresenter.generateRandomNumberSet(spinnerNumberDice, spinnerNumberSides);
 
+
         // output the list for viewers
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Collections.singletonList(diceValues.toString()));
         ListView diceResults = (ListView) this.findViewById(R.id.diceResultsListOutput);

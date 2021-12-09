@@ -95,7 +95,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 playersArrayList.add(new String(cursor.getString(0)));
-                cursor.moveToNext();
             } while (cursor.moveToNext());
         }
         return playersArrayList;
@@ -108,7 +107,6 @@ public class DBHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 gamesArrayList.add(new String(cursor.getString(1)));
-                cursor.moveToNext();
             } while (cursor.moveToNext());
         }
         return gamesArrayList;

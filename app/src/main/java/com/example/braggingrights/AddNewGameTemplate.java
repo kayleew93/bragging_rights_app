@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -26,21 +27,27 @@ public class AddNewGameTemplate extends AppCompatActivity {
         numberRounds = findViewById(R.id.selectNumberRounds);
         needsDice = findViewById(R.id.needsDice);
         highScoreWins = findViewById(R.id.isHighScoreWins);
+
     }
     public void cancelTemplate(View view) {
         startActivity(new Intent(AddNewGameTemplate.this, CreateGameActivity.class));
     }
 
+    // Function to add a new template
     public void clickAddNewTemplate(View view) {
 
+        // convert variables to strings to send to database
         String nameTXT = name.getText().toString();
         String numberRoundsTXT = numberRounds.getText().toString();
         int numberRoundsINT = Integer.parseInt(numberRoundsTXT);
+
+        //TODO: Figure out how to get updated switch value
         String highScoreWinsTXT = highScoreWins.getText().toString();
         Boolean highScoreWinsBool = Boolean.parseBoolean(highScoreWinsTXT);
         String needsDiceTXT = needsDice.getText().toString();
         Boolean needsDiceBool = Boolean.parseBoolean(needsDiceTXT);
 
+        // insert the data, give a toast for success or failure
         Boolean checkinsertdata = db.insertNewGameTemplate(nameTXT, numberRoundsINT, highScoreWinsBool, needsDiceBool);
         if (checkinsertdata==true) {
             Toast.makeText(AddNewGameTemplate.this, "New Game Template Submitted", Toast.LENGTH_LONG).show();

@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".CreateGameActivity">
 
+    <Spinner
+        android:id="@+id/listExistingGames"
+        android:layout_width="411dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:accessibilityLiveRegion="polite"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <TextView
         android:id="@+id/startGameTitle"
         android:layout_width="wrap_content"
@@ -22,8 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:text="Select Game"
+        android:layout_marginTop="32dp"
+        android:text="Select game you want to play:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/startGameTitle" />
 
@@ -32,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="28dp"
         android:text="Don't see the game you want?"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintBottom_toTopOf="@+id/clickAddNewGameTemplate"
@@ -42,11 +55,21 @@
         android:id="@+id/clickAddNewGameTemplate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="252dp"
         android:onClick="clickCreateNewGameTemplate"
         android:text="Add New Game Template"
         android:textAppearance="@style/TextAppearance.AppCompat.Small"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/buttonToStartGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="120dp"
+        android:text="Start Game"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

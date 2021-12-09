@@ -103,10 +103,10 @@ public class DBHelper extends SQLiteOpenHelper {
     public ArrayList<String> getGamesList() {
         ArrayList<String> gamesArrayList = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select name from GameTemplate", null);
+        Cursor cursor = db.rawQuery("Select * from GameTemplate", null);
         if (cursor.moveToFirst()) {
             do {
-                gamesArrayList.add(new String(cursor.getString(2)));
+                gamesArrayList.add(new String(cursor.getString(1)));
                 cursor.moveToNext();
             } while (cursor.moveToNext());
         }

@@ -36,7 +36,7 @@ public class CreateGameActivity extends AppCompatActivity implements
         // Spinner click listener
         gamesListSpinner.setOnItemSelectedListener(this);
         // Loading spinner data from database
-        //loadSpinnerData();
+        loadSpinnerData();
     }
 
     /**
@@ -49,11 +49,10 @@ public class CreateGameActivity extends AppCompatActivity implements
         // Spinner Drop down elements
         ArrayList<String> gamesArrayList = db.getGamesList();
 
-        Log.d(TAG, "List:" + gamesArrayList);
+        Log.d(TAG, "List Array:" + gamesArrayList);
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, gamesArrayList);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, gamesArrayList);
 
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

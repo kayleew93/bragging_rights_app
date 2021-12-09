@@ -94,7 +94,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from PlayerDetails", null);
         if (cursor.moveToFirst()) {
             do {
-                playersArrayList.add(new String(cursor.getString(4)));
+                playersArrayList.add(new String(cursor.getString(0)));
                 cursor.moveToNext();
             } while (cursor.moveToNext());
         }

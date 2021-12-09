@@ -7,7 +7,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
         // This is for AWS
-        classpath 'com.amplifyframework:amplify-tools-gradle-plugin:1.0.2'
+        //classpath 'com.amplifyframework:amplify-tools-gradle-plugin:1.0.2'
         // This is for Firebase
         //classpath "com.google.gms:google-services:4.3.10"
 
@@ -20,4 +20,4 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-apply plugin: 'com.amplifyframework.amplifytools'
+//apply plugin: 'com.amplifyframework.amplifytools'

@@ -23,8 +23,6 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
     // Variables
     EditText fullName, pNickname, phoneNumber;
     int gender;
-    FirebaseDatabase rootNode;
-    DatabaseReference reference;
     DBHelper db;
 
     @Override
@@ -80,16 +78,7 @@ public class CreateLocalPlayerActivity extends AppCompatActivity {
                 else
                     Toast.makeText(CreateLocalPlayerActivity.this, "Error: New Player Not Inserted", Toast.LENGTH_LONG).show();
 
-    /*
-        // Test second method
-        FirebaseUpload fbo = new FirebaseUpload();
-        FirebaseStoragePlayer fbsp = new FirebaseStoragePlayer(fullName.getText().toString(), pNickname.getText().toString(), phoneNumber.getText().toString(), 0,0);
-         fbo.add(fbsp).addOnSuccessListener(suc ->
-         {
-             Toast.makeText(this, "Successfully created player", Toast.LENGTH_LONG).show();
-         }).addOnFailureListener(er ->
-         {
-             Toast.makeText(this, "Failure to add", Toast.LENGTH_LONG).show();
-         }); */
+         // Send user to back to Main
+        startActivity(new Intent(CreateLocalPlayerActivity.this, MainActivity.class));
  }
 }

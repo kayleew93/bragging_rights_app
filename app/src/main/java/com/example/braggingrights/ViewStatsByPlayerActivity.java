@@ -48,10 +48,8 @@ public class ViewStatsByPlayerActivity extends AppCompatActivity implements
         playerStatsListSpinner.setAdapter(dataAdapter);
     }
 
+    // Get stats by individual
     public void getIndividualStats(View view) {
-        //TODO: Create a spinner that can be populated by our individuals list
-        //String selectedGame = mySpinner.getSelectedItem().toString();
-
 
         TextView textViewWinPercentage = findViewById(R.id.winToLossPercentageOutput);
         textViewWinPercentage.setText("Hello");
@@ -60,9 +58,10 @@ public class ViewStatsByPlayerActivity extends AppCompatActivity implements
         textViewTotalWins.setText("Hello");
     }
 
+    // Get value of spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        parent.getItemAtPosition(position);
     }
 
     @Override

@@ -18,11 +18,12 @@ public class DBHelper extends SQLiteOpenHelper {
         super(context, "Userdata.db", null, 1);
     }
 
+    // Create the tables; populate the Game templates
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE PlayerDetails (nickname text, gamesWon int, gender int, name text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
         db.execSQL("CREATE TABLE GameTemplate (gameTemplateId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberRounds int, highScoreWins Boolean, needsDice Boolean)");
-        db.execSQL("CREATE TABLE GameResults (gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
+        db.execSQL("CREATE TABLE GameResults (dateId datetime DEFAULT current_timestamp, gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
         db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Monopoly', 1, true, false)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Yahtzee', 13, true, true)");
@@ -38,6 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // Insert player details to the player details table
     public Boolean insertPlayerDetails(int gamesWon, int gender, String name, String nickname, int phoneNumber, int totalGames) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -55,6 +57,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Insert new game template to the game template table
     public Boolean insertNewGameTemplate(String name, int numberRounds, Boolean highScoreWins, Boolean needsDice) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -70,6 +73,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Update information for a user
     public Boolean updateuserdata(String name, Integer totalGames, Integer gamesWon) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -88,6 +92,27 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
+    // Update the games review table
+    // TODO: fix this; connect it to the complete game button
+    public Boolean updategameresultsdata(String name, Integer totalGames, Integer gamesWon) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("totalGames", totalGames);
+        contentValues.put("gamesWon", gamesWon);
+        Cursor cursor = db.rawQuery("Select * from PlayerDetails where name = ?", new String[] {name});
+        if (cursor.getCount() >0) {
+            long result = db.update("PlayerDetails", contentValues, "name=?", new String[]{name});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    // Retrieves a list of player nicknames
     public ArrayList<String> getPlayerNicknameList() {
         ArrayList<String> playersArrayList = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -100,10 +125,24 @@ public class DBHelper extends SQLiteOpenHelper {
         return playersArrayList;
     }
 
+    // Retrieves the list of games
     public ArrayList<String> getGamesList() {
         ArrayList<String> gamesArrayList = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select * from GameTemplate", null);
+        if (cursor.moveToFirst()) {
+            do {
+                gamesArrayList.add(new String(cursor.getString(1)));
+            } while (cursor.moveToNext());
+        }
+        return gamesArrayList;
+    }
+
+    // Retrieves the list of games played
+    public ArrayList<String> getGamesResultsList() {
+        ArrayList<String> gamesArrayList = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select * from GameResults", null);
         if (cursor.moveToFirst()) {
             do {
                 gamesArrayList.add(new String(cursor.getString(1)));

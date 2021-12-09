@@ -48,7 +48,7 @@ public class LiveGameActivity extends AppCompatActivity {
     }
 
     public void clickCompleteGame(View view) {
-        //TODO: Complete the game through LiveGamePresenter
+        //TODO: Complete the game; send information to the DB Helper
     }
 
 

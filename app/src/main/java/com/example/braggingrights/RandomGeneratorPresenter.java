@@ -12,6 +12,7 @@ public class RandomGeneratorPresenter {
         return randomNum;
     }
 
+    // Create a list of random numbers
      List<Integer> generateRandomNumberSet(Integer numberDice, Integer numberSides) {
 
          List<Integer> diceResultsList = new LinkedList<>();

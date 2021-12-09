@@ -47,8 +47,6 @@ public class CreateGameActivity extends AppCompatActivity implements
         db = new DBHelper(this);
         // Spinner Drop down elements
         ArrayList<String> gamesArrayList = db.getGamesList();
-        // TODO: For some reason we're missing some games
-        Log.d(TAG, "List Array:" + gamesArrayList);
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, gamesArrayList);
         // Drop down layout style - list view with radio button
@@ -67,13 +65,13 @@ public class CreateGameActivity extends AppCompatActivity implements
         startActivity(new Intent(CreateGameActivity.this, LiveGameActivity.class));
     }
 
+    // Get value of spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-
+        parent.getItemAtPosition(position);
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
 }

@@ -20,7 +20,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE PlayerDetails (gamesWon int, gender int, name text, nickname text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
+        db.execSQL("CREATE TABLE PlayerDetails (nickname text, gamesWon int, gender int, name text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
         db.execSQL("CREATE TABLE GameTemplate (gameTemplateId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberRounds int, highScoreWins Boolean, needsDice Boolean)");
         db.execSQL("CREATE TABLE GameResults (gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
         db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
@@ -88,16 +88,17 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getPlayerNicknameList() {
+    public ArrayList<String> getPlayerNicknameList() {
+        ArrayList<String> playersArrayList = new ArrayList<String>();
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select nickname, playerId from PlayerDetails", null);
-        return cursor;
-    }
-
-    public Cursor getGamesList1() {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select name from GameTemplate", null);
-        return cursor;
+        Cursor cursor = db.rawQuery("Select * from PlayerDetails", null);
+        if (cursor.moveToFirst()) {
+            do {
+                playersArrayList.add(new String(cursor.getString(4)));
+                cursor.moveToNext();
+            } while (cursor.moveToNext());
+        }
+        return playersArrayList;
     }
 
     public ArrayList<String> getGamesList() {

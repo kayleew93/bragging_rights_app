@@ -17,23 +17,23 @@ public class LiveGameActivity extends AppCompatActivity {
     ArrayList<String> playerArrayList;
     private static final String TAG = "LiveGameActivity";
 
-    // Get Specified Game
-    //String game = getIntent().getStringExtra("game");
+    String gameName;
+    ArrayList<String> playersList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_game);
 
+        // Get Specified Game
+        gameName = getIntent().getStringExtra("game");
+        playersList = getIntent().getStringArrayListExtra("playerList");
+
         // Get the listview
         ListView playerList = (ListView) findViewById(R.id.playerListLiveGame);
-        // Get the nicknames from the database
-        db = new DBHelper(this);
-        playerArrayList = db.getPlayerNicknameList();
         // Adapt array list so it will work on list
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playerArrayList);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playersList);
         playerList.setAdapter(arrayAdapter);
-
     }
 
     public void clickUseDice(View view) {

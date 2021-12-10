@@ -21,15 +21,15 @@ public class CreateGameSelectPlayerActivity extends AppCompatActivity {
     ArrayList<String> selectedPlayersArrayList = new ArrayList<String>();
     private static final String TAG = "LiveGameActivity";
 
-    // Get Specified Game
-    //String game = getIntent().getStringExtra("name");
+    String game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game_select_player);
 
-        //Log.d(TAG, "Value of Game: " + game);
+        // Get Specified Game from intent
+        game = getIntent().getStringExtra("name");
 
         // Get the listview
         ListView playerList = (ListView) findViewById(R.id.playerSelectListOutput);
@@ -69,8 +69,8 @@ public class CreateGameSelectPlayerActivity extends AppCompatActivity {
         // Send user to Create Game Activity
         //startActivity(new Intent(CreateGameSelectPlayerActivity.this, LiveGameActivity.class));
         Intent intent = new Intent(CreateGameSelectPlayerActivity.this, LiveGameActivity.class);
-        //intent.putExtra("game", game);
-        //intent.putExtra("playerList", selectedPlayersArrayList);
+        intent.putExtra("game", game);
+        intent.putExtra("playerList", selectedPlayersArrayList);
         startActivity(intent);
     }
 }

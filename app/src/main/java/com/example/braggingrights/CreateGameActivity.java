@@ -61,11 +61,8 @@ public class CreateGameActivity extends AppCompatActivity implements
 
     public void clickStartGame(View view) {
         // Send user to Create Game Activity
-
-        String selectedGameString = selectedGame.toString();
-        //startActivity(new Intent(CreateGameActivity.this, CreateGameSelectPlayerActivity.class));
         Intent intent = new Intent(CreateGameActivity.this, CreateGameSelectPlayerActivity.class);
-        //intent.putExtra("name", "Hello");
+        intent.putExtra("name", selectedGame);
         startActivity(intent);
     }
 

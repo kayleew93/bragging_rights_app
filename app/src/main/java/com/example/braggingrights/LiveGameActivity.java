@@ -22,6 +22,9 @@ public class LiveGameActivity extends AppCompatActivity {
     ArrayList<String> playerArrayList;
     private static final String TAG = "LiveGameActivity";
 
+    // Get Specified Game
+    String game = getIntent().getStringExtra("game");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +39,6 @@ public class LiveGameActivity extends AppCompatActivity {
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playerArrayList);
         playerList.setAdapter(arrayAdapter);
 
-        Log.d(TAG, "playerList list" + playerArrayList);
     }
 
     public void clickUseDice(View view) {

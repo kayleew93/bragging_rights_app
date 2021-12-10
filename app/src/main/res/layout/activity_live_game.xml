@@ -32,10 +32,10 @@
     <ListView
         android:id="@+id/playerListLiveGame"
         android:layout_width="363dp"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="72dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginEnd="48dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toTopOf="@+id/addAnotherRoundButton"
         app:layout_constraintEnd_toEndOf="parent"

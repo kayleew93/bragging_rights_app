@@ -55,5 +55,10 @@ public class AddNewGameTemplate extends AppCompatActivity {
         else {
             Toast.makeText(AddNewGameTemplate.this, "Error: Game template not inserted", Toast.LENGTH_LONG).show();}
     }
+
+    // Function to go back to previous activity
+    public void clickCancel(View view) {
+        startActivity(new Intent(AddNewGameTemplate.this, CreateGameActivity.class));
+    }
 }
 

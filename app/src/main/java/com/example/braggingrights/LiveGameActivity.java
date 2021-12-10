@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,10 @@ public class LiveGameActivity extends AppCompatActivity {
         // Adapt array list so it will work on list
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playersList);
         playerList.setAdapter(arrayAdapter);
+
+
+        TextView gameTitleOutput = (TextView) findViewById(R.id.gameTitleOutput);
+        gameTitleOutput.setText("Now Playing " + gameName);
     }
 
     public void clickUseDice(View view) {

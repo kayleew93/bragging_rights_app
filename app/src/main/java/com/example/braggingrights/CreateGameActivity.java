@@ -23,6 +23,8 @@ public class CreateGameActivity extends AppCompatActivity implements
     DBHelper db;
     // Spinner element
     Spinner gamesListSpinner;
+    // variable for getting game
+    String selectedGame;
 
     private static final String TAG = "CreateGameActivity";
 
@@ -71,7 +73,7 @@ public class CreateGameActivity extends AppCompatActivity implements
     // Get value of spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        parent.getItemAtPosition(position);
+        selectedGame = parent.getItemAtPosition(position).toString();
     }
 
     @Override

@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="100dp"
         android:text="Win to Loss Percentage:"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,6 +51,17 @@
         app:layout_constraintTop_toBottomOf="@+id/winToLossText" />
 
     <TextView
+        android:id="@+id/totalNumberWinsText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="48dp"
+        android:text="Total Number of Games:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalNumberWinsText" />
+
+    <TextView
         android:id="@+id/winToLossPercentageOutput"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,11 +77,19 @@
         app:layout_constraintStart_toEndOf="@+id/totalNumberWinsText"
         app:layout_constraintTop_toTopOf="@+id/totalNumberWinsText" />
 
+    <TextView
+        android:id="@+id/totalGamesOutput"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintStart_toEndOf="@+id/totalNumberWinsText2"
+        app:layout_constraintTop_toTopOf="@+id/totalNumberWinsText2" />
+
     <Button
         android:id="@+id/selectPlayerStatsButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="170dp"
         android:layout_marginEnd="24dp"
         android:onClick="getIndividualStats"
         android:text="Select Player"

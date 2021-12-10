@@ -28,6 +28,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Monopoly', 1, true, false)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Yahtzee', 13, true, true)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('UNO', 1, true, false)");
+        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('pedro123', 10, 0, 'Peter', 5555555555, 15)");
+        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('lizbeth', 8, 1, 'Elizabeth', 5551113333, 12)");
     }
 
     @Override
@@ -149,5 +151,58 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return gamesArrayList;
+    }
+
+    /*
+    // Retrieves a list of data for a player
+    public ArrayList<String> getPlayerStatsGamesWon(String nickname) {
+        ArrayList<String> playerDataArrayList = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select gamesWon from PlayerDetails WHERE nickname =?", new String[] {nickname});
+        if (cursor.moveToFirst()) {
+            do {
+                playerDataArrayList.add(new String(cursor.getString(0)));
+            } while (cursor.moveToNext());
+        }
+        return playerDataArrayList;
+    }
+
+    // Retrieves a list of data for a player
+    public ArrayList<String> getPlayerStatsTotalGames(String nickname) {
+        ArrayList<String> playerDataArrayList = new ArrayList<String>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select totalGames from PlayerDetails WHERE nickname =?", new String[] {nickname});
+        if (cursor.moveToFirst()) {
+            do {
+                playerDataArrayList.add(new String(cursor.getString(0)));
+            } while (cursor.moveToNext());
+        }
+        return playerDataArrayList;
+    } */
+
+    // Retrieves a list of data for a player
+    public String getPlayerStatsGamesWon(String nickname) {
+        String playerGamesWon = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select gamesWon from PlayerDetails WHERE nickname =?", new String[] {nickname});
+        if (cursor.moveToFirst()) {
+            do {
+                playerGamesWon = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        return playerGamesWon;
+    }
+
+    // Retrieves a list of data for a player
+    public String getPlayerStatsTotalGames(String nickname) {
+        String playerDataArrayList = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select totalGames from PlayerDetails WHERE nickname =?", new String[] {nickname});
+        if (cursor.moveToFirst()) {
+            do {
+                playerDataArrayList = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        return playerDataArrayList;
     }
 }

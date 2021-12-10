@@ -10,21 +10,22 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class LiveGameActivity extends AppCompatActivity {
+public class SelectPlayersActivity extends AppCompatActivity {
 
     // for list of players
     DBHelper db;
     ArrayList<String> playerArrayList;
-    private static final String TAG = "LiveGameActivity";
+    private static final String TAG = "SelectPlayersActivity";
 
-    // Get Specified Game
+    // Get info from intent
     String game = getIntent().getStringExtra("game");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_live_game);
+        setContentView(R.layout.activity_select_players);
 
+        /*
         // Get the listview
         ListView playerList = (ListView) findViewById(R.id.playerListOutput2);
         // Get the nicknames from the database
@@ -33,20 +34,14 @@ public class LiveGameActivity extends AppCompatActivity {
         // Adapt array list so it will work on list
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playerArrayList);
         playerList.setAdapter(arrayAdapter);
-
+        */
     }
 
-    public void clickUseDice(View view) {
-        startActivity(new Intent(LiveGameActivity.this, DiceActivity.class));
+    public void clickSubmitPlayers(View view) {
+        // Send user to Live Game Activity
+        Intent i = new Intent(SelectPlayersActivity.this, LiveGameActivity.class);
+        i.putExtra("name", game);
+        i.putExtra("playerArray", playerArrayList);
+        startActivity(i);
     }
-
-    public void clickAddAnotherRound(View view) {
-        //TODO: Add another round through LiveGamePresenter
-    }
-
-    public void clickCompleteGame(View view) {
-        //TODO: Complete the game; send information to the DB Helper
-    }
-
-
 }

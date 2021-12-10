@@ -1,7 +1,6 @@
 package com.example.braggingrights;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -11,9 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
-
 import com.google.android.material.textfield.TextInputLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,10 +61,9 @@ public class CreateGameActivity extends AppCompatActivity implements
 
     public void clickStartGame(View view) {
         // Send user to Create Game Activity
-        Intent i = new Intent(CreateGameActivity.this, LiveGameActivity.class);
-        i.putExtra("name", String.valueOf(gamesListSpinner));
-        startActivity(i);
-
+        Intent intent = new Intent(CreateGameActivity.this, SelectPlayersActivity.class);
+        intent.putExtra("name", selectedGame);
+        startActivity(intent);
     }
 
     // Get value of spinner

@@ -13,7 +13,7 @@
         android:layout_marginTop="48dp"
         android:layout_marginBottom="24dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        app:layout_constraintBottom_toTopOf="@+id/playerListOutput2"
+        app:layout_constraintBottom_toTopOf="@+id/playerListLiveGame"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -30,14 +30,14 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <ListView
-        android:id="@+id/playerListOutput2"
+        android:id="@+id/playerListLiveGame"
         android:layout_width="363dp"
-        android:layout_height="611dp"
+        android:layout_height="500dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="72dp"
-        android:layout_marginBottom="200dp"
-        app:layout_constraintBottom_toTopOf="@+id/useDice"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/addAnotherRoundButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

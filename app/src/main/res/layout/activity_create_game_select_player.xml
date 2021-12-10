@@ -4,35 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelectPlayersActivity">
-
-    <ListView
-        android:id="@+id/playerListOutput"
-        android:layout_width="0dp"
-        android:layout_height="500dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selectPlayersTitle"
-        android:choiceMode="multipleChoice"/>
+    tools:context=".CreateGameSelectPlayerActivity">
 
     <TextView
-        android:id="@+id/selectPlayersTitle"
+        android:id="@+id/whoIsPlayingTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Who is playing?"
+        android:text="Who is Playing?"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/submitPlayersButton"
+        android:id="@+id/selectPlayersButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -41,4 +27,15 @@
         android:text="Submit Players"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <ListView
+        android:id="@+id/playerSelectListOutput"
+        android:layout_width="363dp"
+        android:layout_height="500dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/selectPlayersButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/whoIsPlayingTitle" />
 </androidx.constraintlayout.widget.ConstraintLayout>

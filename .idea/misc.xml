@@ -5,6 +5,8 @@
       <map>
         <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_add_new_game_template.xml" value="0.2857142857142857" />
         <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_create_game.xml" value="0.3828571428571429" />
+        <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_create_game_select_player.xml" value="0.2857142857142857" />
+        <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_create_game_select_players.xml" value="0.25885416666666666" />
         <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_create_local_player.xml" value="0.42857142857142855" />
         <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_dice.xml" value="0.4328125" />
         <entry key="..\:/Users/Kaylee/AndroidStudioProjects/BraggingRights/app/src/main/res/layout/activity_live_game.xml" value="0.25885416666666666" />

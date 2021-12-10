@@ -18,7 +18,7 @@ public class LiveGameActivity extends AppCompatActivity {
     private static final String TAG = "LiveGameActivity";
 
     // Get Specified Game
-    String game = getIntent().getStringExtra("game");
+    //String game = getIntent().getStringExtra("game");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class LiveGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_live_game);
 
         // Get the listview
-        ListView playerList = (ListView) findViewById(R.id.playerListOutput2);
+        ListView playerList = (ListView) findViewById(R.id.playerListLiveGame);
         // Get the nicknames from the database
         db = new DBHelper(this);
         playerArrayList = db.getPlayerNicknameList();

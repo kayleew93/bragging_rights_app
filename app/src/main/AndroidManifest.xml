@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BraggingRights">
         <activity
-            android:name=".SelectPlayersActivity"
-            android:exported="false" />
-        <activity
             android:name=".SelectAvatar"
             android:exported="false" />
         <activity
@@ -23,6 +20,9 @@
             android:exported="false" />
         <activity
             android:name=".CreateGameActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateGameSelectPlayerActivity"
             android:exported="false" />
         <activity
             android:name=".AddNewGameTemplate"

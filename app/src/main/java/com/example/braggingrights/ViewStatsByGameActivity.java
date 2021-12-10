@@ -38,9 +38,9 @@ public class ViewStatsByGameActivity extends AppCompatActivity implements
         // database handler
         db = new DBHelper(this);
         // Spinner Drop down elements
-        ArrayList<String> playerNicknameArray = db.getGamesResultsList();
+        ArrayList<String> gamesResultsList = db.getGamesResultsList();
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, playerNicknameArray);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, gamesResultsList);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
@@ -48,6 +48,31 @@ public class ViewStatsByGameActivity extends AppCompatActivity implements
     }
 
     public void getGroupStats(View view) {
+
+        // Connect to database and get information on the selected player
+        db = new DBHelper(this);
+
+        /*
+        // Get the total number of games won and total games
+        String playerGamesWon = db.getPlayerStatsGamesWon(selectedPlayer);
+        String playerTotalGames = db.getPlayerStatsTotalGames(selectedPlayer);
+        int playerGamesWonINT = Integer.parseInt(playerGamesWon);
+        int playerTotalGamesINT = Integer.parseInt(playerTotalGames);
+
+        // Calculate win percentage for player
+        double playerGamesWonDouble = playerGamesWonINT;
+        double playerTotalGamesDouble = playerTotalGamesINT;
+        double playerWinPercentage = playerGamesWonDouble / playerTotalGamesDouble * 100;
+
+        TextView textViewWinPercentage = findViewById(R.id.winToLossPercentageOutput);
+        textViewWinPercentage.setText(playerWinPercentage + "%");
+
+        TextView textViewTotalWins = findViewById(R.id.totalWinsOutput);
+        textViewTotalWins.setText(playerGamesWon);
+
+        TextView textViewTotalGamesPlayed = findViewById(R.id.totalGamesOutput);
+        textViewTotalGamesPlayed.setText(playerTotalGames);
+        */
 
         TextView textViewWinningStreak = findViewById(R.id.currentWinningStreakOutput);
         textViewWinningStreak.setText("Hello");

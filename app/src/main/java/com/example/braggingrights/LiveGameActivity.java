@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -15,7 +16,6 @@ public class LiveGameActivity extends AppCompatActivity {
 
     // for list of players
     DBHelper db;
-    ArrayList<String> playerArrayList;
     private static final String TAG = "LiveGameActivity";
 
     String gameName;
@@ -25,6 +25,8 @@ public class LiveGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_live_game);
+
+        db = new DBHelper(this);
 
         // Get Specified Game
         gameName = getIntent().getStringExtra("game");
@@ -51,6 +53,14 @@ public class LiveGameActivity extends AppCompatActivity {
 
     public void clickCompleteGame(View view) {
         //TODO: Complete the game; send information to the DB Helper
+        Boolean checkinsertdata = db.updateGameResultsData(gameName);
+        if (checkinsertdata==true)
+            Toast.makeText(LiveGameActivity.this, "Completed Game Saved", Toast.LENGTH_LONG).show();
+        else
+            Toast.makeText(LiveGameActivity.this, "Error: Completed Game Not Saved", Toast.LENGTH_LONG).show();
+
+        // Send user to back to Main
+        startActivity(new Intent(LiveGameActivity.this, MainActivity.class));
     }
 
 

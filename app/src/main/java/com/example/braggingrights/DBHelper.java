@@ -76,14 +76,14 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Update information for a user
-    public Boolean updateuserdata(String name, Integer totalGames, Integer gamesWon) {
+    public Boolean updateUserData(String nickname, Integer totalGames, Integer gamesWon) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put("totalGames", totalGames);
         contentValues.put("gamesWon", gamesWon);
-        Cursor cursor = db.rawQuery("Select * from PlayerDetails where name = ?", new String[] {name});
+        Cursor cursor = db.rawQuery("Select * from PlayerDetails where nickname = ?", new String[] {nickname});
         if (cursor.getCount() >0) {
-            long result = db.update("PlayerDetails", contentValues, "name=?", new String[]{name});
+            long result = db.update("PlayerDetails", contentValues, "nickname=?", new String[]{nickname});
             if (result == -1) {
                 return false;
             } else {
@@ -96,11 +96,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Update the games review table
     // TODO: fix this; connect it to the complete game button
-    public Boolean updategameresultsdata(String name, Integer totalGames, Integer gamesWon) {
+    public Boolean updateGameResultsData(String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("totalGames", totalGames);
-        contentValues.put("gamesWon", gamesWon);
+        contentValues.put("name", name);
         Cursor cursor = db.rawQuery("Select * from PlayerDetails where name = ?", new String[] {name});
         if (cursor.getCount() >0) {
             long result = db.update("PlayerDetails", contentValues, "name=?", new String[]{name});
@@ -153,33 +152,6 @@ public class DBHelper extends SQLiteOpenHelper {
         return gamesArrayList;
     }
 
-    /*
-    // Retrieves a list of data for a player
-    public ArrayList<String> getPlayerStatsGamesWon(String nickname) {
-        ArrayList<String> playerDataArrayList = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select gamesWon from PlayerDetails WHERE nickname =?", new String[] {nickname});
-        if (cursor.moveToFirst()) {
-            do {
-                playerDataArrayList.add(new String(cursor.getString(0)));
-            } while (cursor.moveToNext());
-        }
-        return playerDataArrayList;
-    }
-
-    // Retrieves a list of data for a player
-    public ArrayList<String> getPlayerStatsTotalGames(String nickname) {
-        ArrayList<String> playerDataArrayList = new ArrayList<String>();
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("Select totalGames from PlayerDetails WHERE nickname =?", new String[] {nickname});
-        if (cursor.moveToFirst()) {
-            do {
-                playerDataArrayList.add(new String(cursor.getString(0)));
-            } while (cursor.moveToNext());
-        }
-        return playerDataArrayList;
-    } */
-
     // Retrieves a list of data for a player
     public String getPlayerStatsGamesWon(String nickname) {
         String playerGamesWon = null;
@@ -195,14 +167,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Retrieves a list of data for a player
     public String getPlayerStatsTotalGames(String nickname) {
-        String playerDataArrayList = null;
+        String playerStatsTotalGame = null;
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("Select totalGames from PlayerDetails WHERE nickname =?", new String[] {nickname});
         if (cursor.moveToFirst()) {
             do {
-                playerDataArrayList = cursor.getString(0);
+                playerStatsTotalGame = cursor.getString(0);
             } while (cursor.moveToNext());
         }
-        return playerDataArrayList;
+        return playerStatsTotalGame;
     }
 }

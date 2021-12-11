@@ -56,7 +56,8 @@ public class CreateGameSelectPlayerActivity extends AppCompatActivity {
                         String name = (String) playerList.getItemAtPosition(key);
 
                         // Display the checked items on in the arraylist
-                        selectedPlayersArrayList.add(name.toString());
+                        if (!selectedPlayersArrayList.contains(name)) {
+                        selectedPlayersArrayList.add(name);}
 
                     }
                 }

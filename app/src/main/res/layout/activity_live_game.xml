@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:layout_marginBottom="24dp"
-        android:fontFamily="cursive"
+        android:fontFamily="casual"
         android:textColor="@color/purple_700"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintBottom_toTopOf="@+id/playerListLiveGame"

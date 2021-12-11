@@ -32,12 +32,11 @@
     <ListView
         android:id="@+id/playerListLiveGame"
         android:layout_width="363dp"
-        android:layout_height="450dp"
+        android:layout_height="0dp"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="125dp"
         android:layout_marginEnd="48dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/addAnotherRoundButton"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -51,17 +50,6 @@
         android:onClick="clickCompleteGame"
         android:text="Complete Game"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/addAnotherRoundButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="24dp"
-        android:onClick="clickAddAnotherRound"
-        android:text="Add Another Round"
-        app:layout_constraintBottom_toTopOf="@+id/completeGameButton"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

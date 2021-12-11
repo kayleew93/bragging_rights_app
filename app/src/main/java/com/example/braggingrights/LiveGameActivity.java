@@ -33,22 +33,18 @@ public class LiveGameActivity extends AppCompatActivity {
         playersList = getIntent().getStringArrayListExtra("playerList");
 
         // Get the listview
-        ListView playerList = (ListView) findViewById(R.id.playerListLiveGame);
+        ListView playerListView = (ListView) findViewById(R.id.playerListLiveGame);
         // Adapt array list so it will work on list
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, playersList);
-        playerList.setAdapter(arrayAdapter);
+        ArrayAdapter adapter = new ArrayAdapter(LiveGameActivity.this, R.layout.listview_livegame_style, R.id.playerNameList, playersList);
+        playerListView.setAdapter(adapter);
 
-
+        // Set the title of the page
         TextView gameTitleOutput = (TextView) findViewById(R.id.gameTitleOutput);
         gameTitleOutput.setText("Now Playing " + gameName);
     }
 
     public void clickUseDice(View view) {
         startActivity(new Intent(LiveGameActivity.this, DiceActivity.class));
-    }
-
-    public void clickAddAnotherRound(View view) {
-        //TODO: Add another round through LiveGamePresenter
     }
 
     public void clickCompleteGame(View view) {

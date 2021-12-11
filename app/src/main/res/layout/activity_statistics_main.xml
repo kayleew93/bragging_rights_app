@@ -10,7 +10,7 @@
         android:id="@+id/statsByGameButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="80dp"
         android:onClick="clickViewStatsByGame"
         android:text="By Game"
         app:layout_constraintEnd_toEndOf="parent"

@@ -87,11 +87,6 @@ public class ViewStatsByPlayerActivity extends AppCompatActivity implements
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
-
-    // List of functions we can use:
-    // calculateIndividualPercentage()
-    // calculateIndividualStreak()
 
 }

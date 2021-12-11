@@ -32,6 +32,8 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('UNO', 1, true, false)");
         db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Pedro', 3, 0, 'Peter', 5555555555, 4)");
         db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Lizbeth', 8, 1, 'Elizabeth', 5551113333, 10)");
+        db.execSQL("INSERT INTO GameResults (date, gameName, winnerName) VALUES ('Fri Dec 10 20:35:13 MST 2021 - Monopoly', 'Monopoly', 'Pedro')");
+        db.execSQL("INSERT INTO GameResults (date, gameName, winnerName) VALUES ('Sat Dec 11 13:22:04 MST 2021 - UNO', 'UNO', 'Lizbeth')");
     }
 
     @Override
@@ -96,11 +98,11 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Update the games review table
-    // TODO: fix this; connect it to the complete game button
+    // Insert into the games review table
     public Boolean insertGameResultsData(String gameName, String winnerName) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        // get the current time
         Date currentTime = Calendar.getInstance().getTime();
         contentValues.put("gameName", gameName);
         contentValues.put("winnerName", winnerName);
@@ -146,7 +148,7 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("Select * from GameResults", null);
         if (cursor.moveToFirst()) {
             do {
-                gamesArrayList.add(new String(cursor.getString(1)));
+                gamesArrayList.add(new String(cursor.getString(0)));
             } while (cursor.moveToNext());
         }
         return gamesArrayList;
@@ -176,5 +178,31 @@ public class DBHelper extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
         return playerStatsTotalGame;
+    }
+
+    // Retrieves a list of data for a player
+    public String getStatsGameName(String date) {
+        String gameName = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select gameName from GameResults WHERE date =?", new String[] {date});
+        if (cursor.moveToFirst()) {
+            do {
+                gameName = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        return gameName;
+    }
+
+    // Retrieves a list of data for a player
+    public String getStatsGameWinner(String date) {
+        String gameWinner = null;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("Select winnerName from GameResults WHERE date =?", new String[] {date});
+        if (cursor.moveToFirst()) {
+            do {
+                gameWinner = cursor.getString(0);
+            } while (cursor.moveToNext());
+        }
+        return gameWinner;
     }
 }

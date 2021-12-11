@@ -17,6 +17,7 @@ public class ViewStatsByGameActivity extends AppCompatActivity implements
     DBHelper db;
     // Spinner element
     Spinner gameStatsListSpinner;
+    String selectedGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,47 +53,26 @@ public class ViewStatsByGameActivity extends AppCompatActivity implements
         // Connect to database and get information on the selected player
         db = new DBHelper(this);
 
-        /*
         // Get the total number of games won and total games
-        String playerGamesWon = db.getPlayerStatsGamesWon(selectedPlayer);
-        String playerTotalGames = db.getPlayerStatsTotalGames(selectedPlayer);
-        int playerGamesWonINT = Integer.parseInt(playerGamesWon);
-        int playerTotalGamesINT = Integer.parseInt(playerTotalGames);
+        String gameName = db.getStatsGameName(selectedGame);
+        String winnerName = db.getStatsGameWinner(selectedGame);
 
-        // Calculate win percentage for player
-        double playerGamesWonDouble = playerGamesWonINT;
-        double playerTotalGamesDouble = playerTotalGamesINT;
-        double playerWinPercentage = playerGamesWonDouble / playerTotalGamesDouble * 100;
+        TextView gameNameView = findViewById(R.id.gameNameView);
+        gameNameView.setText(gameName);
 
-        TextView textViewWinPercentage = findViewById(R.id.winToLossPercentageOutput);
-        textViewWinPercentage.setText(playerWinPercentage + "%");
+        TextView winnerNameView = findViewById(R.id.winnerNameView);
+        winnerNameView.setText(winnerName);
 
-        TextView textViewTotalWins = findViewById(R.id.totalWinsOutput);
-        textViewTotalWins.setText(playerGamesWon);
-
-        TextView textViewTotalGamesPlayed = findViewById(R.id.totalGamesOutput);
-        textViewTotalGamesPlayed.setText(playerTotalGames);
-        */
-
-        TextView textViewWinningStreak = findViewById(R.id.currentWinningStreakOutput);
-        textViewWinningStreak.setText("Hello");
-
-        TextView textViewLongestWinningStreak = findViewById(R.id.longestWinningStreakText);
-        textViewLongestWinningStreak.setText("Hello");
     }
 
     // Gets value from the spinner
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        parent.getItemAtPosition(position);
+        selectedGame = parent.getItemAtPosition(position).toString();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
-    // List of functions we can use:
-    // calculateMaxGroupStreak()
-    // calculateGroupPercentage()
 }

@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Monopoly', 1, true, false)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Yahtzee', 13, true, true)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('UNO', 1, true, false)");
-        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Pedro', 3, 0, 'Peter', 5555555555, 4)");
+        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Peter', 3, 0, 'Peter', 5555555555, 4)");
         db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Lizbeth', 8, 1, 'Elizabeth', 5551113333, 10)");
         db.execSQL("INSERT INTO GameResults (date, gameName, winnerName) VALUES ('Fri Dec 10 20:35:13 MST 2021 - Monopoly', 'Monopoly', 'Pedro')");
         db.execSQL("INSERT INTO GameResults (date, gameName, winnerName) VALUES ('Sat Dec 11 13:22:04 MST 2021 - UNO', 'UNO', 'Lizbeth')");

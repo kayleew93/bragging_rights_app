@@ -48,8 +48,17 @@ public class LiveGameActivity extends AppCompatActivity {
     }
 
     public void clickCompleteGame(View view) {
-        //TODO: Complete the game; send information to the DB Helper
         String winnerName = "Peter";
+
+        // Update the total number of games for each player
+        for (String nickname: playersList) {
+            db.updateUserTotalGames(nickname);
+        }
+
+        // Update total number of wins for winning player
+        db.updateUserTotalWins(winnerName);
+        
+        // Insert the results of the completed game and give status
         Boolean checkinsertdata = db.insertGameResultsData(gameName, winnerName);
         if (checkinsertdata==true)
             Toast.makeText(LiveGameActivity.this, "Completed Game Saved", Toast.LENGTH_LONG).show();

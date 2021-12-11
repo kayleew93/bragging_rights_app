@@ -80,11 +80,35 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     // Update information for a user
-    public Boolean updateUserData(String nickname, Integer totalGames, Integer gamesWon) {
+    public Boolean updateUserTotalGames(String nickname) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("totalGames", totalGames);
-        contentValues.put("gamesWon", gamesWon);
+        // Get the total games played and add one
+        String totalGames = getPlayerStatsTotalGames(nickname);
+        int totalGamesInt = Integer.parseInt(totalGames);
+        int totalGamesUpdated = totalGamesInt + 1;
+        contentValues.put("totalGames", totalGamesUpdated);
+        Cursor cursor = db.rawQuery("Select * from PlayerDetails where nickname = ?", new String[] {nickname});
+        if (cursor.getCount() >0) {
+            long result = db.update("PlayerDetails", contentValues, "nickname=?", new String[]{nickname});
+            if (result == -1) {
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    public Boolean updateUserTotalWins(String nickname) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        // Get the total games played and add one
+        String totalWins = getPlayerStatsGamesWon(nickname);
+        int totalWinsInt = Integer.parseInt(totalWins);
+        int totalWinsUpdated = totalWinsInt + 1;
+        contentValues.put("gamesWon", totalWinsUpdated);
         Cursor cursor = db.rawQuery("Select * from PlayerDetails where nickname = ?", new String[] {nickname});
         if (cursor.getCount() >0) {
             long result = db.update("PlayerDetails", contentValues, "nickname=?", new String[]{nickname});
@@ -180,7 +204,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return playerStatsTotalGame;
     }
 
-    // Retrieves a list of data for a player
+    // Retrieves the name of a specific game
     public String getStatsGameName(String date) {
         String gameName = null;
         SQLiteDatabase db = this.getReadableDatabase();
@@ -193,7 +217,7 @@ public class DBHelper extends SQLiteOpenHelper {
         return gameName;
     }
 
-    // Retrieves a list of data for a player
+    // Retrieves who won a specific game
     public String getStatsGameWinner(String date) {
         String gameWinner = null;
         SQLiteDatabase db = this.getReadableDatabase();

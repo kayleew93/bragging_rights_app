@@ -49,7 +49,8 @@ public class LiveGameActivity extends AppCompatActivity {
 
     public void clickCompleteGame(View view) {
         //TODO: Complete the game; send information to the DB Helper
-        Boolean checkinsertdata = db.updateGameResultsData(gameName);
+        String winnerName = "Peter";
+        Boolean checkinsertdata = db.insertGameResultsData(gameName, winnerName);
         if (checkinsertdata==true)
             Toast.makeText(LiveGameActivity.this, "Completed Game Saved", Toast.LENGTH_LONG).show();
         else

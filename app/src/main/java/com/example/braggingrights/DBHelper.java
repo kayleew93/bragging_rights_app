@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -23,13 +25,13 @@ public class DBHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE PlayerDetails (nickname text, gamesWon int, gender int, name text, phoneNumber int, totalGames int, playerId INTEGER PRIMARY KEY AUTOINCREMENT)");
         db.execSQL("CREATE TABLE GameTemplate (gameTemplateId INTEGER PRIMARY KEY AUTOINCREMENT, name text, numberRounds int, highScoreWins Boolean, needsDice Boolean)");
-        db.execSQL("CREATE TABLE GameResults (dateId datetime DEFAULT current_timestamp, gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, FOREIGN KEY (gameId) REFERENCES GameDetails (gameId))");
-        db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
+        db.execSQL("CREATE TABLE GameResults (date text, gameResultsId INTEGER PRIMARY KEY AUTOINCREMENT, gameName text, winnerName text)");
+        //db.execSQL("CREATE TABLE PlayersList (gamePlayersListId INTEGER PRIMARY KEY AUTOINCREMENT, gameId int, playerId int, score int, win Boolean, FOREIGN KEY (gameId) REFERENCES GameResults (gameResultsId), FOREIGN KEY (playerId) REFERENCES PlayerDetails (playerId))");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Monopoly', 1, true, false)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('Yahtzee', 13, true, true)");
         db.execSQL("INSERT INTO GameTemplate (name, numberRounds, highScoreWins, needsDice) VALUES ('UNO', 1, true, false)");
-        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('pedro123', 10, 0, 'Peter', 5555555555, 15)");
-        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('lizbeth', 8, 1, 'Elizabeth', 5551113333, 12)");
+        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Pedro', 3, 0, 'Peter', 5555555555, 4)");
+        db.execSQL("INSERT INTO PlayerDetails (nickname, gamesWon, gender, name, phoneNumber, totalGames) VALUES ('Lizbeth', 8, 1, 'Elizabeth', 5551113333, 10)");
     }
 
     @Override
@@ -37,7 +39,7 @@ public class DBHelper extends SQLiteOpenHelper {
         db.execSQL(("DROP TABLE IF EXISTS PlayerDetails"));
         db.execSQL(("DROP TABLE IF EXISTS GameTemplate"));
         db.execSQL(("DROP TABLE IF EXISTS GameResults"));
-        db.execSQL(("DROP TABLE IF EXISTS PlayersList"));
+        //db.execSQL(("DROP TABLE IF EXISTS PlayersList"));
         onCreate(db);
     }
 
@@ -96,20 +98,18 @@ public class DBHelper extends SQLiteOpenHelper {
 
     // Update the games review table
     // TODO: fix this; connect it to the complete game button
-    public Boolean updateGameResultsData(String name) {
+    public Boolean insertGameResultsData(String gameName, String winnerName) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("name", name);
-        Cursor cursor = db.rawQuery("Select * from PlayerDetails where name = ?", new String[] {name});
-        if (cursor.getCount() >0) {
-            long result = db.update("PlayerDetails", contentValues, "name=?", new String[]{name});
-            if (result == -1) {
-                return false;
-            } else {
-                return true;
-            }
-        } else {
+        Date currentTime = Calendar.getInstance().getTime();
+        contentValues.put("gameName", gameName);
+        contentValues.put("winnerName", winnerName);
+        contentValues.put("date", String.valueOf(currentTime) + " - " + gameName);
+        long result = db.insert("GameResults", null, contentValues);
+        if (result == -1) {
             return false;
+        } else {
+            return true;
         }
     }
 

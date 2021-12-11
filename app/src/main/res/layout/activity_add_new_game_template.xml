@@ -12,6 +12,8 @@
         android:layout_height="48dp"
         android:layout_marginTop="24dp"
         android:text="@string/create_new_game_template"
+        android:fontFamily="casual"
+        android:textColor="@color/purple_700"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
